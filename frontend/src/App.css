@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+:root {
+    --app-bg: #8338ec;
+    --app-fg: #fff;
+    --muted: #9ca3af;
+}
+
+/* Reset box model + remove default spacing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure app fills the viewport */
+html,
+body,
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+/* Base body styles */
+body {
+    background-color: var(--app-bg);
+    color: var(--app-fg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Neue Machina";
+    line-height: 1.5;
+}
+
+/* Remove default list markers (Tailwind's `list-none` is preferred in components) */
+ul {
+    list-style: none;
+}
+
+/* Form element sensible defaults */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+/* Accessible focus states - prefer using Tailwind's focus utilities on elements */
+:focus {
+    outline: none;
+}
+:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.9);
+    outline-offset: 2px;
+}
+
+/* Small helper: visually hidden but available to screen readers */
+.sr-only {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
+/* Backwards-compatible helper for the search "pill" used previously in CSS.
+   This is provided only as a short-term fallback. Prefer replacing with Tailwind classes:
+   Example Tailwind equivalent:
+     <div className="bg-white text-black rounded-full px-3 py-1 flex items-center gap-2">...</div>
+*/
+.search-pill {
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Utility: muted text fallback (prefer `text-gray-400` etc in Tailwind) */
+.muted {
+    color: var(--muted);
+}
+
+/* Responsive/behavioral notes:
+   - Remove component-specific styles from this file. Use Tailwind utility classes in components
+     (e.g. Navbar.jsx and Hero.jsx) for maintainability and to take full advantage of Tailwind.
+   - If you need small project-specific components, consider adding them via @layer components
+     in a separate CSS file or in this file below an `@layer components { ... }` block.
+*/
